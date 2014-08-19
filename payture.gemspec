@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Payture::VERSION
   spec.authors       = ["Igor Davydov"]
   spec.email         = ["iskiche@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Payture api ruby gem}
+  spec.description   = %q{Optional.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -21,4 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5"
+  spec.add_dependency "faraday"
+  spec.add_dependency "faraday_middleware"
+  spec.add_dependency "multi_xml"
+  spec.add_dependency "hashie"
 end

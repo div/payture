@@ -1,17 +1,29 @@
+require 'faraday'
 require File.expand_path('../version', __FILE__)
 
 module Payture
   module Configuration
+
+    DOMAIN = 'payture.com'
+
     VALID_OPTIONS_KEYS = [
-      :host,
+      :api_type,
+      :host_type,
       :key,
       :password,
+      :format,
+      :user_agent,
+      :adapter
     ].freeze
 
 
-    DEFAULT_HOST = 'sandbox'
+    DEFAULT_API_TYPE = 'vwapi'
+    DEFAULT_HOST_TYPE = 'sandbox'
     DEFAULT_KEY = 'MerchantKey'
     DEFAULT_PASSWORD = nil
+    DEFAULT_USER_AGENT = "Payture Ruby Gem #{Payture::VERSION}".freeze
+    DEFAULT_FORMAT = 'xml'
+    DEFAULT_ADAPTER = Faraday.default_adapter
 
     attr_accessor *VALID_OPTIONS_KEYS
 
@@ -34,9 +46,13 @@ module Payture
 
     # Reset all configuration options to defaults
     def reset
-      self.host = DEFAULT_HOST
+      self.adapter = DEFAULT_ADAPTER
+      self.api_type = DEFAULT_API_TYPE
+      self.host_type = DEFAULT_HOST_TYPE
       self.key = DEFAULT_KEY
       self.password = DEFAULT_PASSWORD
+      self.user_agent = DEFAULT_USER_AGENT
+      self.format = DEFAULT_FORMAT
     end
   end
 end
