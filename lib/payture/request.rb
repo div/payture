@@ -21,10 +21,9 @@ module Payture
 
     def request(method, path, options, raw=false, unformatted=false, no_response_wrapper=false)
       response = connection(raw).send(method) do |request|
-        # path = formatted_path(path) unless unformatted
         case method
         when :get, :delete
-          request.url(path, options)
+          request.url(path, 'DATA' => encoded_string(options))
         when :post, :put
           request.path = path
           request.body = options unless options.empty?
@@ -33,6 +32,11 @@ module Payture
       return response if raw
       return response.body if no_response_wrapper
       return Response.create( response.body )
+    end
+
+    def encoded_string hash
+      s = hash.map{|k,v| "#{k}=#{v}"}.join(';')
+      CGI.escape s
     end
 
     def formatted_path(path)

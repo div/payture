@@ -19,7 +19,7 @@ module Payture
 
     DEFAULT_API_TYPE = 'vwapi'
     DEFAULT_HOST_TYPE = 'sandbox'
-    DEFAULT_KEY = 'MerchantKey'
+    DEFAULT_KEY = 'VWMerchant'
     DEFAULT_PASSWORD = nil
     DEFAULT_USER_AGENT = "Payture Ruby Gem #{Payture::VERSION}".freeze
     DEFAULT_FORMAT = 'xml'

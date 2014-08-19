@@ -16,10 +16,8 @@ module Payture
     include Connection
     include Request
 
-    protected
-
-      def host
-        "https://#{host_type}.#{Configuration::DOMAIN}/#{api_type}"
-      end
+    def host
+      "https://#{host_type}.#{Configuration::DOMAIN}/#{api_type}/"
+    end
   end
 end

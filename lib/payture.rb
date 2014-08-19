@@ -19,4 +19,8 @@ module Payture
     return client.respond_to?(method) || super
   end
 
+  # def self.host
+  #   "https://#{host_type}.#{Configuration::DOMAIN}/#{api_type}/"
+  # end
+
 end
