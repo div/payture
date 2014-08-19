@@ -2,16 +2,8 @@ module Payture
   class Client
     module Vwapi
 
-      # def register(*args)
-      #   options = args.last.is_a?(Hash) ? args.pop : {}
-      #   id = args.first || 'self'
-      #   response = get("users/#{id}", options)
-      #   response
-      # end
-
       def register(options={})
         response = get('Register', options)
-        puts response.inspect
         response.register
       end
 

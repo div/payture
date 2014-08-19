@@ -22,6 +22,7 @@ module Payture
 
       it "returns status" do
         response = @client.register
+        puts response.inspect
         response.success.must_equal "False"
       end
 
