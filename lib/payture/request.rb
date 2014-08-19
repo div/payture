@@ -21,7 +21,7 @@ module Payture
 
     def request(method, path, options, raw=false, unformatted=false, no_response_wrapper=false)
       response = connection(raw).send(method) do |request|
-        path = formatted_path(path) unless unformatted
+        # path = formatted_path(path) unless unformatted
         case method
         when :get, :delete
           request.url(path, options)

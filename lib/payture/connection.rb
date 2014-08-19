@@ -15,6 +15,7 @@ module Payture
         # connection.use FaradayMiddleware::ExchangeAuth, token
         connection.use Faraday::Request::UrlEncoded
         connection.use FaradayMiddleware::Mashify unless raw
+        connection.use FaradayMiddleware::Underscore unless raw
         unless raw
           case format.to_s.downcase
           when 'json' then connection.use Faraday::Response::ParseJson

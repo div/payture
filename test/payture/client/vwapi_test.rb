@@ -20,9 +20,9 @@ module Payture
       #   assert_requested @register
       # end
 
-      it "Returns status" do
+      it "returns status" do
         response = @client.register
-        response.status.must_equal "Denis Drachev"
+        response.success.must_equal "False"
       end
 
     end

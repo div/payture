@@ -11,7 +11,8 @@ module Payture
 
       def register(options={})
         response = get('Register', options)
-        response['Register']
+        puts response.inspect
+        response.register
       end
 
       # def user_follows(*args)
