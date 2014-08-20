@@ -7,6 +7,11 @@ module Payture
         response.register
       end
 
+      def add(options={})
+        response = get('Add', options)
+        response.add
+      end
+
       # def user_follows(*args)
       #   options = args.last.is_a?(Hash) ? args.pop : {}
       #   id = args.first || "self"

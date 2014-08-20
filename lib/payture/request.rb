@@ -35,8 +35,17 @@ module Payture
     end
 
     def encoded_string hash
-      s = hash.map{|k,v| "#{k}=#{v}"}.join(';')
+      s = hash.map{|k,v| "#{convert_to_camelcase(k)}=#{v}"}.join(';')
       CGI.escape s
+    end
+
+    def convert_to_camelcase(key)
+      key = key.to_s
+      if key.split('_').count > 1
+        key.split('_').collect(&:capitalize).join
+      else
+        key
+      end
     end
 
     def formatted_path(path)
