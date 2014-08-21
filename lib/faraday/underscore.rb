@@ -1,4 +1,5 @@
 require 'faraday'
+require 'payture'
 
 module FaradayMiddleware
   # Converts parsed response bodies to underscored keys if bodies were of
@@ -18,17 +19,12 @@ module FaradayMiddleware
       def convert_hash_keys(value)
         case value
         when Array
-          # value.map { |v| convert_hash_keys(v) }
           value.map(&method(:convert_hash_keys))
         when Hash
-          Hash[value.map { |k, v| [convert_to_underscore(k), convert_hash_keys(v)] }]
+          Hash[value.map { |k, v| [Payture::Helper.convert_to_underscore(k), convert_hash_keys(v)] }]
         else
           value
         end
-      end
-
-      def convert_to_underscore(key)
-        key.scan(/[A-Z][a-z]*/).join("_").downcase
       end
 
   end

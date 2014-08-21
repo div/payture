@@ -19,5 +19,9 @@ module Payture
     def host
       "https://#{host_type}.#{Configuration::DOMAIN}/#{api_type}/"
     end
+
+    def convert_to_underscore(key)
+      key.scan(/[A-Z][a-z]*/).join("_").downcase
+    end
   end
 end

@@ -1,4 +1,4 @@
-module Exchanges
+module Payture
 
   class Error < StandardError; end
 

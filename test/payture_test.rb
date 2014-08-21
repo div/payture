@@ -8,4 +8,8 @@ describe Payture do
   it 'has host' do
     Payture.host.must_equal 'https://sandbox.payture.com/vwapi/'
   end
+
+  it 'converts to underscore' do
+    Payture.convert_to_underscore('AssDf').must_equal 'ass_df'
+  end
 end

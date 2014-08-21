@@ -12,7 +12,6 @@ module FaradayMiddleware
 
       if @access_token
         env[:url].query = Faraday::Utils.build_query(query.merge('VWID' => @access_token))
-        # env[:request_headers] = env[:request_headers].merge('Authorization' => "Token token=\"#{@access_token}\"")
       end
 
       @app.call env

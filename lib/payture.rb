@@ -2,6 +2,7 @@ require File.expand_path('../payture/configuration', __FILE__)
 require File.expand_path('../payture/api', __FILE__)
 require File.expand_path('../payture/client', __FILE__)
 require File.expand_path('../payture/error', __FILE__)
+require File.expand_path('../payture/helper', __FILE__)
 
 module Payture
   extend Configuration
@@ -18,9 +19,5 @@ module Payture
   def self.respond_to?(method)
     return client.respond_to?(method) || super
   end
-
-  # def self.host
-  #   "https://#{host_type}.#{Configuration::DOMAIN}/#{api_type}/"
-  # end
 
 end
