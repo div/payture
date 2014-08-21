@@ -12,6 +12,21 @@ module Payture
         response.add
       end
 
+      def pay(options={})
+        response = get('Pay', options)
+        response.pay
+      end
+
+      def get_list(options={})
+        response = get('GetList', options)
+        response.get_list
+      end
+
+      def activate(options={})
+        response = get('Activate', options)
+        response.activate
+      end
+
       # def user_follows(*args)
       #   options = args.last.is_a?(Hash) ? args.pop : {}
       #   id = args.first || "self"

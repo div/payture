@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.payture.com/vwapi/Add?DATA=VWUserLgn%253Dfucker1%2540dom.com%253BVWUserPsw%253D123%253BCardNumber%253D4111111111111112%253BEMonth%253D12%253BEYear%253D15%253BCardHolder%253DIvan%2BIvanov%253BSecureCode%253D123%253BPhoneNumber%253D79001234567&VWID=VWMerchant
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/xml; charset=utf-8
+      User-Agent:
+      - Payture Ruby Gem 0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Aug 2014 11:43:19 GMT
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '117'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <Add VWUserLgn="" Success="True" CardName="411111xxxxxx1112" CardId="e43544ba-cf4f-4702-85ef-313df89577eb"
+        />
+    http_version:
+  recorded_at: Thu, 21 Aug 2014 11:43:19 GMT
+recorded_with: VCR 2.9.2
