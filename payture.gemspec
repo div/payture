@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'payture/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "payture"
+  spec.name          = "payture_ruby"
   spec.version       = Payture::VERSION
   spec.authors       = ["Igor Davydov"]
   spec.email         = ["iskiche@gmail.com"]
