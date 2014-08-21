@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/div/payture.svg?branch=master)](https://travis-ci.org/div/payture)
+
 # Payture
 
 This gems wraps e-walet api of payture.com credit card processing
