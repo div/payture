@@ -256,5 +256,27 @@ module Payture
         end
       end
     end
+
+    describe '.init' do
+      let(:email) { 'fucker1@dom.com' }
+      let(:card_id) { "e43544ba-cf4f-4702-85ef-313df89577eb" }
+      let(:options) {
+        {
+          session_type: 'Block',
+          v_w_user_lgn: email,
+          v_w_user_psw: 123,
+          ip: '123.123.122.111',
+          amount: 1000,
+          order_id: 'asdfasfafa1234'
+        }
+      }
+      subject { client.init options }
+
+      it "returns success status" do
+        VCR.use_cassette('init/existing_user') do
+          subject.success.must_equal "True"
+        end
+      end
+    end
   end
 end

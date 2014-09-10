@@ -4,7 +4,7 @@ module Payture
   class Client
     module Vwapi
 
-      API_METHODS = %w(Register Update Delete Add Activate Remove GetList Pay Refund PayStatus)
+      API_METHODS = %w(Register Update Delete Add Activate Remove GetList Pay Refund PayStatus Init)
 
       API_METHODS.each do |method_name|
         underscore_method_name = Payture::Helper.convert_to_underscore method_name
