@@ -15,6 +15,14 @@ module Payture
         end
       end
 
+      def charge options={}
+        options = hash_to_camelcase(options)
+        response = connection(false).get do |request|
+          request.url('Charge', options)
+        end
+        return Response.create(response.body).charge
+      end
+
     end
   end
 end

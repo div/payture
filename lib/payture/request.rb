@@ -35,11 +35,19 @@ module Payture
     end
 
     def encoded_string hash
-      s = hash.map{|k,v| "#{convert_to_camelcase(k)}=#{v}"}.join(';')
-      CGI.escape s
+      h = convert_to_camelcase hash
+      CGI.escape h.join(';')
     end
 
-    def convert_to_camelcase(key)
+    def convert_to_camelcase hash
+      hash.map{|k,v| "#{to_camelcase(k)}=#{v}"}
+    end
+
+    def hash_to_camelcase hash
+      Hash[hash.map {|k, v| [to_camelcase(k.capitalize), v] }]
+    end
+
+    def to_camelcase(key)
       key = key.to_s
       if key.split('_').count > 1
         key.split('_').collect(&:capitalize).join

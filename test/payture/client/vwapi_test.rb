@@ -258,8 +258,7 @@ module Payture
     end
 
     describe '.init' do
-      let(:email) { 'fucker1@dom.com' }
-      let(:card_id) { "e43544ba-cf4f-4702-85ef-313df89577eb" }
+      let(:email) { 'new@dom.com' }
       let(:options) {
         {
           session_type: 'Block',
@@ -267,13 +266,81 @@ module Payture
           v_w_user_psw: 123,
           ip: '123.123.122.111',
           amount: 1000,
-          order_id: 'asdfasfafa1234'
+          order_id: 'new123'
         }
       }
       subject { client.init options }
 
       it "returns success status" do
-        VCR.use_cassette('init/existing_user') do
+        VCR.use_cassette('init/new_user') do
+          subject.success.must_equal "True"
+        end
+      end
+    end
+
+    describe '.pay to block after init' do
+      let(:email) { 'new@dom.com' }
+      let(:card_number) { 4111111111111112 }
+      let(:order_id) { 'new123' }
+      let(:options) {
+        {
+          v_w_user_lgn: email,
+          v_w_user_psw: 123,
+          card_id: 'FreePay',
+          card_number: card_number,
+          e_month: 12,
+          e_year: 15,
+          card_holder: 'Ivan Ivanov',
+          secure_code: 123,
+          phone_number: 79001234567,
+          order_id: order_id,
+          amount: '1000',
+          ip: '123.123.122.111'
+        }
+      }
+      subject { client.pay options }
+
+
+      it "returns success status" do
+        VCR.use_cassette('pay/new_user/block') do
+          subject.success.must_equal "True"
+        end
+      end
+
+    end
+
+    describe '.pay_status' do
+      let(:options) {
+        {
+          order_id: 'new123',
+        }
+      }
+      subject { client.pay_status options }
+
+      it "returns success status" do
+        VCR.use_cassette('pay_status/blocked') do
+          subject.success.must_equal "True"
+        end
+      end
+      it "returns payment status" do
+        VCR.use_cassette('pay_status/blocked') do
+          subject.status.must_equal "Authorized"
+        end
+      end
+    end
+
+    describe '.charge' do
+      let(:options) {
+        {
+          amount: 1000,
+          order_id: 'new123',
+          password: 123
+        }
+      }
+      subject { client.charge options }
+
+      it "returns success status" do
+        VCR.use_cassette('charge/blocked') do
           subject.success.must_equal "True"
         end
       end

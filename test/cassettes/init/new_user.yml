@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.payture.com/vwapi/Init?DATA=SessionType%253DBlock%253BVWUserLgn%253Dfucker1%2540dom.com%253BVWUserPsw%253D123%253Bip%253D123.123.122.111%253Bamount%253D1000%253BOrderId%253Dasdfasfafa1234345&VWID=VWMerchant
+    uri: https://sandbox.payture.com/vwapi/Init?DATA=SessionType%253DBlock%253BVWUserLgn%253Dnew%2540dom.com%253BVWUserPsw%253D123%253Bip%253D123.123.122.111%253Bamount%253D1000%253BOrderId%253Dnew123&VWID=VWMerchant
     body:
       encoding: US-ASCII
       string: ''
@@ -21,17 +21,17 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 10 Sep 2014 23:22:01 GMT
+      - Thu, 11 Sep 2014 00:26:08 GMT
       Content-Type:
       - text/xml; charset=utf-8
       Content-Length:
-      - '137'
+      - '130'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: <Init Success="True" OrderId="asdfasfafa1234345" Amount="1000" SessionId="b324fe03-f70b-4a3d-8265-526c8e718c49"
+      string: <Init Success="True" OrderId="new123" Amount="1000" SessionId="ede6348e-ff39-41a0-8a9b-bf28d106de13"
         SessionType="Block" />
     http_version:
-  recorded_at: Wed, 10 Sep 2014 23:22:01 GMT
+  recorded_at: Thu, 11 Sep 2014 00:26:08 GMT
 recorded_with: VCR 2.9.2

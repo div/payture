@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.payture.com/vwapi/Init?DATA=SessionType%253DBlock%253BVWUserLgn%253Dfucker1%2540dom.com%253BVWUserPsw%253D123%253Bip%253D123.123.122.111%253Bamount%253D1000%253BOrderId%253Dasdfasfafa1234345&VWID=VWMerchant
+    uri: https://sandbox.payture.com/vwapi/PayStatus?DATA=OrderId%253Dnew123&VWID=VWMerchant
     body:
       encoding: US-ASCII
       string: ''
@@ -21,17 +21,17 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 10 Sep 2014 23:22:01 GMT
+      - Thu, 11 Sep 2014 00:31:49 GMT
       Content-Type:
       - text/xml; charset=utf-8
       Content-Length:
-      - '137'
+      - '116'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: <Init Success="True" OrderId="asdfasfafa1234345" Amount="1000" SessionId="b324fe03-f70b-4a3d-8265-526c8e718c49"
-        SessionType="Block" />
+      string: <PayStatus Success="True" VWUserLgn="" OrderId="new123" Amount="1000"
+        CardId="" Status="Authorized" />
     http_version:
-  recorded_at: Wed, 10 Sep 2014 23:22:01 GMT
+  recorded_at: Thu, 11 Sep 2014 00:31:49 GMT
 recorded_with: VCR 2.9.2
