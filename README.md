@@ -25,6 +25,7 @@ Or install it yourself as:
 In an initializer:
 
 ```ruby
+require 'payture' 
 Payture.configure do |config|
   config.host_type = 'sandbox' # or 'secure'
   config.key = 'WVMerchant' # your user access key
