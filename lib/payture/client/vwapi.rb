@@ -23,6 +23,14 @@ module Payture
         return Response.create(response.body).charge
       end
 
+      def paySubmit3DS options={}
+        options = hash_to_camelcase(options)
+        response = connection(false, false).get do |request|
+          request.url('PaySubmit3DS', options)
+        end
+        return Response.create(response.body).pay
+      end
+
     end
   end
 end
