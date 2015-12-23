@@ -20,7 +20,7 @@ module Payture
     private
 
     def request(method, path, options, raw=false, unformatted=false, no_response_wrapper=false)
-      response = connection(raw).send(method) do |request|
+      response = connection({raw: raw}).send(method) do |request|
         case method
         when :get, :delete
           request.url(path, 'DATA' => encoded_string(options))

@@ -4,11 +4,11 @@ module Payture
   describe Client do
 
 
-    let(:client) { Client.new }
+    let(:client) { Client.new(password: '123') }
 
     describe ".register" do
 
-      let(:options) { {'VWUserLgn' => '123@ya.ru', 'VWUserPsw' => 123, 'PhoneNumber' => 79156783333 } }
+      let(:options) { {'VWUserLgn' => '123@ya.ru', 'VWUserPsw' => 123, 'PhoneNumber' => 79156783333} }
       subject { client.register options }
 
       describe 'follow doc example' do
@@ -17,7 +17,7 @@ module Payture
           before do
             data_string = 'VWUserLgn%3D123%40ya.ru%3BVWUserPsw%3D123%3BPhoneNumber%3D79156783333'
             @get = stub_get("Register")
-              .with(query: {'VWID' => client.key, 'DATA' => data_string})
+                       .with(query: {'VWID' => client.key, 'DATA' => data_string})
           end
           it 'should be correct' do
             subject
@@ -37,7 +37,7 @@ module Payture
 
       describe 'using real credentials' do
         let(:email) { '1234567@ya.ru' }
-        let(:options) { {'VWUserLgn' => email, 'VWUserPsw' => 123, 'PhoneNumber' => 79156781234 } }
+        let(:options) { {'VWUserLgn' => email, 'VWUserPsw' => 123, 'PhoneNumber' => 79156781234} }
         subject { client.register options }
         describe 'with new user' do
           it "returns success status" do
@@ -57,14 +57,14 @@ module Payture
       let(:card_number) { 4111111111111112 }
       let(:options) {
         {
-          v_w_user_lgn: email,
-          v_w_user_psw: 123,
-          card_number: card_number,
-          e_month: 12,
-          e_year: 15,
-          card_holder: 'Ivan Ivanov',
-          secure_code: 123,
-          phone_number: 79001234567,
+            v_w_user_lgn: email,
+            v_w_user_psw: 123,
+            card_number: card_number,
+            e_month: 12,
+            e_year: 15,
+            card_holder: 'Ivan Ivanov',
+            secure_code: 123,
+            phone_number: 79001234567,
         }
       }
       subject { client.add options }
@@ -72,7 +72,7 @@ module Payture
         before do
           data_string = 'VWUserLgn%3Drom1%40dom.com%3BVWUserPsw%3D123%3BCardNumber%3D4111111111111112%3BEMonth%3D12%3BEYear%3D15%3BCardHolder%3DIvan+Ivanov%3BSecureCode%3D123%3BPhoneNumber%3D79001234567'
           @get = stub_get("Add")
-            .with(query: {'VWID' => client.key, 'DATA' => data_string})
+                     .with(query: {'VWID' => client.key, 'DATA' => data_string})
         end
         it 'should be correct' do
           subject
@@ -140,10 +140,10 @@ module Payture
       let(:card_id) { "e43544ba-cf4f-4702-85ef-313df89577eb" }
       let(:options) {
         {
-          v_w_user_lgn: email,
-          v_w_user_psw: 123,
-          card_id: card_id,
-          amount: '100',
+            v_w_user_lgn: email,
+            v_w_user_psw: 123,
+            card_id: card_id,
+            amount: '100',
         }
       }
       subject { client.activate options }
@@ -177,12 +177,12 @@ module Payture
       let(:card_id) { "2e4b31b5-d4db-4cd0-90d8-bdef46cee299" }
       let(:options) {
         {
-          v_w_user_lgn: email,
-          v_w_user_psw: 123,
-          card_id: card_id,
-          order_id: order_id,
-          amount: '1000',
-          ip: '123.123.122.111'
+            v_w_user_lgn: email,
+            v_w_user_psw: 123,
+            card_id: card_id,
+            order_id: order_id,
+            amount: '1000',
+            ip: '123.123.122.111'
         }
       }
       subject { client.pay options }
@@ -244,8 +244,8 @@ module Payture
       let(:email) { 'fucker@dom.com' }
       let(:options) {
         {
-          v_w_user_lgn: email,
-          v_w_user_psw: 123,
+            v_w_user_lgn: email,
+            v_w_user_psw: 123,
         }
       }
       subject { client.get_list options }
@@ -261,12 +261,12 @@ module Payture
       let(:email) { 'new@dom.com' }
       let(:options) {
         {
-          session_type: 'Block',
-          v_w_user_lgn: email,
-          v_w_user_psw: 123,
-          ip: '123.123.122.111',
-          amount: 1000,
-          order_id: 'new123'
+            session_type: 'Block',
+            v_w_user_lgn: email,
+            v_w_user_psw: 123,
+            ip: '123.123.122.111',
+            amount: 1000,
+            order_id: 'new123'
         }
       }
       subject { client.init options }
@@ -284,18 +284,18 @@ module Payture
       let(:order_id) { 'new123' }
       let(:options) {
         {
-          v_w_user_lgn: email,
-          v_w_user_psw: 123,
-          card_id: 'FreePay',
-          card_number: card_number,
-          e_month: 12,
-          e_year: 15,
-          card_holder: 'Ivan Ivanov',
-          secure_code: 123,
-          phone_number: 79001234567,
-          order_id: order_id,
-          amount: '1000',
-          ip: '123.123.122.111'
+            v_w_user_lgn: email,
+            v_w_user_psw: 123,
+            card_id: 'FreePay',
+            card_number: card_number,
+            e_month: 12,
+            e_year: 15,
+            card_holder: 'Ivan Ivanov',
+            secure_code: 123,
+            phone_number: 79001234567,
+            order_id: order_id,
+            amount: '1000',
+            ip: '123.123.122.111'
         }
       }
       subject { client.pay options }
@@ -312,7 +312,7 @@ module Payture
     describe '.pay_status' do
       let(:options) {
         {
-          order_id: 'new123',
+            order_id: 'new123',
         }
       }
       subject { client.pay_status options }
@@ -332,9 +332,8 @@ module Payture
     describe '.charge' do
       let(:options) {
         {
-          amount: 1000,
-          order_id: 'new123',
-          password: 123
+            amount: 1000,
+            order_id: 'new123',
         }
       }
       subject { client.charge options }
@@ -345,5 +344,22 @@ module Payture
         end
       end
     end
+
+    describe '.unblock' do
+      let(:options) {
+        {
+            amount: 1000,
+            order_id: 'new123',
+        }
+      }
+      subject { client.unblock options }
+
+      it "returns success status" do
+        VCR.use_cassette('unblock/blocked') do
+          subject.success.must_equal "True"
+        end
+      end
+    end
+
   end
 end
